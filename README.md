@@ -6,7 +6,7 @@ Gestao Vagas is a Java Spring Boot application designed to for job vacancies man
 
 - Spring Boot: Framework for building and running Java-based applications.
 
-- PostgreSQL: Relational database management system used to store financial data.
+- PostgreSQL: Relational database management system used to store data.
 
 - Spring Data JPA: Part of the Spring Data project, provides easy and standardized data access using JPA (Java Persistence API).
 
