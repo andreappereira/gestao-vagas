@@ -10,3 +10,8 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       - POSTGRES_DB=gestao_vagas
+    volumes:
+      - 'db_gestao_vagas:/var/lib/postgresql/data'
+
+volumes:
+  db_gestao_vagas:

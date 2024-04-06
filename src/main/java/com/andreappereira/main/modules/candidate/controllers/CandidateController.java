@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.andreappereira.main.exceptions.UserFoundException;
+
 import com.andreappereira.main.modules.candidate.CandidateEntity;
 import com.andreappereira.main.modules.candidate.useCases.CreateCandidateUseCase;
 
