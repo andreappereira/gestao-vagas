@@ -10,4 +10,6 @@ import com.andreappereira.main.modules.company.CompanyEntity;
 
 public interface CompanyRepository extends JpaRepository<CompanyEntity, UUID> {
     Optional<CompanyEntity> findByUsernameOrDocument(String username, String document);
+
+    Optional<CompanyEntity> findByUsername(String username);
 }
