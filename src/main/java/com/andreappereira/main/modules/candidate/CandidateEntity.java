@@ -14,6 +14,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
+
 @Data
 @Entity(name = "candidate")
 public class CandidateEntity {
@@ -28,7 +29,7 @@ public class CandidateEntity {
     @Pattern(regexp = "\\S+", message = "O campo [username] não deve conter espaço.")
     private String username;
 
-    @Length(min = 10, max = 50, message = "A senha deve conter entre (10) e (50) caracteres.")
+    @Length(min = 10, max = 100, message = "A senha deve conter entre (10) e (100) caracteres.")
     private String password;
     private String description;
     private String curriculum;
