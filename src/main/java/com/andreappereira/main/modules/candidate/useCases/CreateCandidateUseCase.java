@@ -25,7 +25,7 @@ public class CreateCandidateUseCase {
             });
 
         var password = passwordEncoder.encode(candidate.getPassword());
-        candidate   .setPassword(password);
+        candidate.setPassword(password);
         
         return this.candidateRepository.save(candidate);
     }

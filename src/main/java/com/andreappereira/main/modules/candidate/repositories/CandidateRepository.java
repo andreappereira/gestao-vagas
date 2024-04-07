@@ -13,5 +13,5 @@ import com.andreappereira.main.modules.candidate.CandidateEntity;
 public interface CandidateRepository extends JpaRepository<CandidateEntity, UUID> {
     Optional<CandidateEntity> findByUsernameOrEmail(String username, String email);
 
-    CandidateEntity findByUsername(String username);
+    Optional<CandidateEntity> findByUsername(String username);
 }

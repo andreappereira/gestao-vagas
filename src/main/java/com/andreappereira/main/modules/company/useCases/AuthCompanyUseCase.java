@@ -19,7 +19,7 @@ import com.auth0.jwt.algorithms.Algorithm;
 
 @Service
 public class AuthCompanyUseCase {
-    @Value("${security.token.secret}")
+    @Value("${security.token.secret.company}")
     private String secretKey;
 
     @Autowired
@@ -31,7 +31,9 @@ public class AuthCompanyUseCase {
 
     public String execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
         var company = this.companyRepository.findByUsername(authCompanyDTO.getUsername())
-            .orElseThrow(() -> { throw new UsernameNotFoundException("Username or password incorrect."); });
+            .orElseThrow(() -> {
+                throw new UsernameNotFoundException("Username or password incorrect.");
+            });
 
         var passwordMatches = this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword());
 
@@ -42,9 +44,9 @@ public class AuthCompanyUseCase {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
         var token = JWT.create().withIssuer("andreappereira")
-            .withExpiresAt(Instant.now().plus(Duration.ofHours(2)))
-            .withSubject(company.getId().toString())
-            .sign(algorithm);
+        .withExpiresAt(Instant.now().plus(Duration.ofHours(1)))
+        .withSubject(company.getId().toString())
+        .sign(algorithm);
 
         return token;
 
