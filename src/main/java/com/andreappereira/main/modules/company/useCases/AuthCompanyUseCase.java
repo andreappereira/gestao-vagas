@@ -11,7 +11,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.andreappereira.main.modules.company.dto.AuthCompanyDTO;
+import com.andreappereira.main.modules.company.dto.AuthCompanyRequestDTO;
+import com.andreappereira.main.modules.company.dto.AuthCompanyResponseDTO;
 import com.andreappereira.main.modules.company.repositories.CompanyRepository;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -29,13 +30,15 @@ public class AuthCompanyUseCase {
     private PasswordEncoder passwordEncoder;
 
 
-    public String execute(AuthCompanyDTO authCompanyDTO) throws AuthenticationException {
-        var company = this.companyRepository.findByUsername(authCompanyDTO.getUsername())
+    public AuthCompanyResponseDTO execute(AuthCompanyRequestDTO authCompanyRequestDTO) throws AuthenticationException {
+        var company = this.companyRepository.findByUsername(authCompanyRequestDTO.username())
             .orElseThrow(() -> {
                 throw new UsernameNotFoundException("Username or password incorrect.");
             });
 
-        var passwordMatches = this.passwordEncoder.matches(authCompanyDTO.getPassword(), company.getPassword());
+        var passwordMatches = this.passwordEncoder.matches(authCompanyRequestDTO.password(), company.getPassword());
+
+        var expiresIn = Instant.now().plus(Duration.ofHours(1));
 
         if(!passwordMatches) {
             throw new AuthenticationException();
@@ -44,11 +47,16 @@ public class AuthCompanyUseCase {
         Algorithm algorithm = Algorithm.HMAC256(secretKey);
 
         var token = JWT.create().withIssuer("andreappereira")
-        .withExpiresAt(Instant.now().plus(Duration.ofHours(1)))
+        .withExpiresAt(expiresIn)
         .withSubject(company.getId().toString())
         .sign(algorithm);
 
-        return token;
+        var response = AuthCompanyResponseDTO.builder()
+        .acess_token(token)
+        .expires_in(expiresIn.toEpochMilli())
+        .build();
+
+        return response;
 
     }
     
