@@ -49,7 +49,7 @@ public class AuthCandidateUseCase {
         var token = JWT.create().withIssuer("andreappereira")
         .withExpiresAt(expiresIn)
         .withSubject(candidate.getId().toString())
-        .withClaim("roles", Arrays.asList("candidate"))
+        .withClaim("roles", Arrays.asList("CANDIDATE"))
         .sign(algorithm);
 
         var response = AuthCandidateResponseDTO.builder()
