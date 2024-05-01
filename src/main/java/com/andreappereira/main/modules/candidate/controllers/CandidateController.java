@@ -2,15 +2,14 @@ package com.andreappereira.main.modules.candidate.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.UUID;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.UUID;
 
 import com.andreappereira.main.modules.candidate.CandidateEntity;
 import com.andreappereira.main.modules.candidate.useCases.CreateCandidateUseCase;
@@ -18,9 +17,6 @@ import com.andreappereira.main.modules.candidate.useCases.ProfileCandidateUseCas
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @RestController

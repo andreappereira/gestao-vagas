@@ -2,6 +2,7 @@ package com.andreappereira.main.modules.company.useCases;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.Arrays;
 
 import javax.naming.AuthenticationException;
 
@@ -49,6 +50,7 @@ public class AuthCompanyUseCase {
         var token = JWT.create().withIssuer("andreappereira")
         .withExpiresAt(expiresIn)
         .withSubject(company.getId().toString())
+        .withClaim("roles", Arrays.asList("COMPANY"))
         .sign(algorithm);
 
         var response = AuthCompanyResponseDTO.builder()
