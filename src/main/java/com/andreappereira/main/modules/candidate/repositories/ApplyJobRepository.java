@@ -1,5 +1,6 @@
 package com.andreappereira.main.modules.candidate.repositories;
 
+import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -10,5 +11,5 @@ import com.andreappereira.main.modules.candidate.entities.ApplyJobEntity;
 
 @Repository
 public interface ApplyJobRepository extends JpaRepository<ApplyJobEntity, UUID> {
-
+    Optional<ApplyJobEntity> findByCandidateIdAndJobId(UUID idCandidate, UUID idJob);
 }

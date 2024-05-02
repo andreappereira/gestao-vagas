@@ -5,6 +5,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.andreappereira.main.exceptions.ApplyFoundException;
 import com.andreappereira.main.exceptions.JobNotFoundExcepetion;
 import com.andreappereira.main.exceptions.UserNotFoundException;
 import com.andreappereira.main.modules.candidate.entities.ApplyJobEntity;
@@ -25,6 +26,12 @@ public class ApplyJobCandidateUseCase {
 
 
     public ApplyJobEntity execute(UUID idCandidate, UUID idJob) {
+        this.applyJobRepository
+        .findByCandidateIdAndJobId(idCandidate, idJob)
+        .ifPresent((applycation) -> {
+            throw new ApplyFoundException();
+        });
+
 
         this.candidateRepository.findById(idCandidate)
         .orElseThrow(() -> {

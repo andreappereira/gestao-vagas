@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.UUID;
 
+import com.andreappereira.main.modules.candidate.dto.ApplyJobDTO;
 import com.andreappereira.main.modules.candidate.dto.ProfileCandidateResponsetDTO;
 import com.andreappereira.main.modules.candidate.entities.CandidateEntity;
+import com.andreappereira.main.modules.candidate.useCases.ApplyJobCandidateUseCase;
 import com.andreappereira.main.modules.candidate.useCases.CreateCandidateUseCase;
 import com.andreappereira.main.modules.candidate.useCases.ProfileCandidateUseCase;
 import com.andreappereira.main.modules.job.JobEntity;
@@ -43,6 +45,9 @@ public class CandidateController {
 
     @Autowired
     private ListAllJobsByFilterUseCase listAllJobsByFilterUseCase;
+
+    @Autowired
+    private ApplyJobCandidateUseCase applyJobCandidateUseCase;
 
 
     @PostMapping("/")
@@ -103,6 +108,22 @@ public class CandidateController {
 
         } catch(Exception e) {
             return ResponseEntity.internalServerError().build();
+        }
+    }
+
+    @PostMapping("/job/apply")
+    @PreAuthorize("hasRole('CANDIDATE')")
+    @Operation(summary = "Apply job", description = "Candidate apply a job.")
+    @SecurityRequirement(name = "jwt_auth")
+    public ResponseEntity<Object> postApplyJob(HttpServletRequest request, @RequestBody ApplyJobDTO applyJobDTO) {
+        var idCandidate = request.getAttribute("candidate_id");
+        
+        try {
+            var response = this.applyJobCandidateUseCase.execute(UUID.fromString(idCandidate.toString()), applyJobDTO.idJob());
+
+            return ResponseEntity.ok().body(response);
+        } catch(Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
     
