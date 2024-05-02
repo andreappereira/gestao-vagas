@@ -34,9 +34,11 @@ Configure the database connection properties to match the PostgreSQL database ru
 ```
 mvn spring-boot:run
 ```
+## API Docs:
+Open a web browser and navigate to http://localhost:8080/swagger-ui/index.html to access.
 
-## Access the Application:
-Open a web browser and navigate to http://localhost:8080 to access the application.
+<!-- ## Access the Application:
+Open a web browser and navigate to http://localhost:8080 to access the application. -->
 
 ### License
 This project is licensed under the MIT License - see the LICENSE file for details.
