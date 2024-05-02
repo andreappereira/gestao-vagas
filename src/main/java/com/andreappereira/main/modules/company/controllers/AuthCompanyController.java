@@ -1,6 +1,5 @@
 package com.andreappereira.main.modules.company.controllers;
 
-import com.andreappereira.main.modules.candidate.dto.AuthCandidateResponseDTO;
 import com.andreappereira.main.modules.company.dto.AuthCompanyRequestDTO;
 import com.andreappereira.main.modules.company.dto.AuthCompanyResponseDTO;
 import com.andreappereira.main.modules.company.useCases.AuthCompanyUseCase;

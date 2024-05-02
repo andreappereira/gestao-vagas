@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.List;
 import java.util.UUID;
 
-import com.andreappereira.main.modules.candidate.CandidateEntity;
 import com.andreappereira.main.modules.candidate.dto.ProfileCandidateResponsetDTO;
+import com.andreappereira.main.modules.candidate.entities.CandidateEntity;
 import com.andreappereira.main.modules.candidate.useCases.CreateCandidateUseCase;
 import com.andreappereira.main.modules.candidate.useCases.ProfileCandidateUseCase;
 import com.andreappereira.main.modules.job.JobEntity;

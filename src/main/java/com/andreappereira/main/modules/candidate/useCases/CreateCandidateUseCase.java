@@ -5,7 +5,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.andreappereira.main.exceptions.UserFoundException;
-import com.andreappereira.main.modules.candidate.CandidateEntity;
+import com.andreappereira.main.modules.candidate.entities.CandidateEntity;
 import com.andreappereira.main.modules.candidate.repositories.CandidateRepository;
 
 

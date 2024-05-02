@@ -1,4 +1,4 @@
-package com.andreappereira.main.modules.candidate;
+package com.andreappereira.main.modules.candidate.entities;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
