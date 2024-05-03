@@ -14,6 +14,7 @@ import java.util.UUID;
 
 import com.andreappereira.main.modules.candidate.dto.ApplyJobDTO;
 import com.andreappereira.main.modules.candidate.dto.ProfileCandidateResponsetDTO;
+import com.andreappereira.main.modules.candidate.entities.ApplyJobEntity;
 import com.andreappereira.main.modules.candidate.entities.CandidateEntity;
 import com.andreappereira.main.modules.candidate.useCases.ApplyJobCandidateUseCase;
 import com.andreappereira.main.modules.candidate.useCases.CreateCandidateUseCase;
@@ -115,6 +116,15 @@ public class CandidateController {
     @PreAuthorize("hasRole('CANDIDATE')")
     @Operation(summary = "Apply job", description = "Candidate apply a job.")
     @SecurityRequirement(name = "jwt_auth")
+    @ApiResponses({
+        @ApiResponse(
+            responseCode = "200",
+            content = {
+                @Content(schema = @Schema(implementation = ApplyJobEntity.class))
+            }
+        ),
+        @ApiResponse(responseCode = "400", description = "Candidate application exists.")
+    })
     public ResponseEntity<Object> postApplyJob(HttpServletRequest request, @RequestBody ApplyJobDTO applyJobDTO) {
         var idCandidate = request.getAttribute("candidate_id");
         
