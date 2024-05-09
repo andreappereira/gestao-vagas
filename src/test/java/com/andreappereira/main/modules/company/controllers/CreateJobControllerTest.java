@@ -22,7 +22,6 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
-import com.andreappereira.main.exceptions.CompanyNotFoundException;
 import com.andreappereira.main.modules.company.CompanyEntity;
 import com.andreappereira.main.modules.company.repositories.CompanyRepository;
 import com.andreappereira.main.modules.job.dto.CreateJobDTO;

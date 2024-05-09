@@ -3,9 +3,9 @@ package com.andreappereira.main.modules.candidate.useCases;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.andreappereira.main.exceptions.UserFoundException;
 import com.andreappereira.main.modules.candidate.dto.ProfileCandidateResponsetDTO;
 import com.andreappereira.main.modules.candidate.repositories.CandidateRepository;
 
@@ -19,7 +19,7 @@ public class ProfileCandidateUseCase {
     public ProfileCandidateResponsetDTO handleGet(UUID idCandidate) {
         var candidate = this.candidateRepository.findById(idCandidate)
         .orElseThrow(() -> {
-            throw new UsernameNotFoundException("User not found");
+            throw new UserFoundException();
         });
 
         var candidtaeDTO = ProfileCandidateResponsetDTO.builder()
