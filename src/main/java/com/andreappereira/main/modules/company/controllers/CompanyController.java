@@ -80,7 +80,6 @@ public class CompanyController {
             .description(createJobDTO.getDescription())
             .build();
 
-
             var response = this.createJobUseCase.handleCreate(job);
 
             return ResponseEntity.ok().body(response);

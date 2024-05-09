@@ -1,4 +1,4 @@
-package com.andreappereira.main.candidate.useCases;
+package com.andreappereira.main.modules.candidate.useCases;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,7 +20,6 @@ import com.andreappereira.main.modules.candidate.entities.ApplyJobEntity;
 import com.andreappereira.main.modules.candidate.entities.CandidateEntity;
 import com.andreappereira.main.modules.candidate.repositories.ApplyJobRepository;
 import com.andreappereira.main.modules.candidate.repositories.CandidateRepository;
-import com.andreappereira.main.modules.candidate.useCases.ApplyJobCandidateUseCase;
 import com.andreappereira.main.modules.job.JobEntity;
 import com.andreappereira.main.modules.job.repositories.JobRepository;
 
