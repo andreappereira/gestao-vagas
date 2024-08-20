@@ -13,5 +13,12 @@ services:
     volumes:
       - 'db_gestao_vagas:/var/lib/postgresql/data'
 
+  sonarqube:
+    container_name: gestao_vagas_sonar
+    image: sonarqube:9.9.0-community
+    ports:
+      - 9000:9000
+
+
 volumes:
   db_gestao_vagas:
