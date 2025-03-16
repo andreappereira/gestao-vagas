@@ -19,7 +19,7 @@ services:
       - postgres
 
   postgres:
-    container_name: gestao_vagas_postgres
+    container_name: postgres
     image: postgres
     ports:
       - 5432:5432
@@ -30,6 +30,27 @@ services:
     volumes:
       - 'db_gestao_vagas:/var/lib/postgresql/data'
 
+  prometheus:
+    container_name: prometheus
+    image: ubuntu/prometheus:2-24.04_stable
+    networks:
+      - gestao-vagas-network
+    ports:
+      - 9090:9090
+    volumes:
+      - './config/prometheus.yml:/etc/prometheus/prometheus.yml'
+      - 'prometheus_data:/prometheus'
+
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    networks:
+      - gestao-vagas-network
+    ports:
+      - 3000:3000
+    volumes:
+      - 'grafana_data:/grafana'
+
   # sonarqube:
   #   container_name: gestao_vagas_sonar
   #   image: sonarqube:9.9.0-community
@@ -38,3 +59,9 @@ services:
 
 volumes:
   db_gestao_vagas:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  gestao-vagas-network:
+    driver: bridge
