@@ -1,6 +1,23 @@
 version: '3.8'
 
 services:
+  gestao_vagas:
+    container_name: gestao_vagas
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - 8080:8080
+      - 5005:5005
+    env_file:
+      - ./.env
+    image: gestao_vagas
+    entrypoint: /app/start.dev.server.sh
+    depends_on:
+      - postgres
+
   postgres:
     container_name: gestao_vagas_postgres
     image: postgres
@@ -13,12 +30,11 @@ services:
     volumes:
       - 'db_gestao_vagas:/var/lib/postgresql/data'
 
-  sonarqube:
-    container_name: gestao_vagas_sonar
-    image: sonarqube:9.9.0-community
-    ports:
-      - 9000:9000
-
+  # sonarqube:
+  #   container_name: gestao_vagas_sonar
+  #   image: sonarqube:9.9.0-community
+  #   ports:
+  #     - 9000:9000
 
 volumes:
   db_gestao_vagas:
