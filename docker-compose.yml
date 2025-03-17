@@ -49,7 +49,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - 'grafana_data:/grafana'
+      - grafana_data:/var/lib/grafana
 
   # sonarqube:
   #   container_name: gestao_vagas_sonar
