@@ -39,4 +39,4 @@ jobs:
                 -e POSTGRES_DB='${{secrets.POSTGRES_DB}}' 
                 -e POSTGRES_USER='${{secrets.POSTGRES_USER}}' 
                 -e POSTGRES_PASSWORD='${{secrets.POSTGRES_PASSWORD}}'
-                -- name gestao-vagas andreappereira/gestao_vagas
+                -- name gestao-vagas andreappereira/gestao_vagas:latest
