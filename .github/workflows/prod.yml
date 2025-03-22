@@ -34,9 +34,9 @@ jobs:
             - name: Run docker container
               run: >
                 docker run -d -p 8080:8080 
-                -e POSTGRES_HOST='${{secrets.POSTGRES_HOST}}' 
-                -e POSTGRES_PORT='${{secrets.POSTGRES_PORT}}' 
-                -e POSTGRES_DB='${{secrets.POSTGRES_DB}}' 
-                -e POSTGRES_USER='${{secrets.POSTGRES_USER}}' 
-                -e POSTGRES_PASSWORD='${{secrets.POSTGRES_PASSWORD}}'
-                --name gestao-vagas andreappereira/gestao_vagas
+                -e POSTGRES_HOST="${{secrets.POSTGRES_HOST}}" 
+                -e POSTGRES_PORT="${{secrets.POSTGRES_PORT}}" 
+                -e POSTGRES_DB="${{secrets.POSTGRES_DB}}" 
+                -e POSTGRES_USER="${{secrets.POSTGRES_USER}}" 
+                -e POSTGRES_PASSWORD="${{secrets.POSTGRES_PASSWORD}}" 
+                --name gestao-vagas andreappereira/gestao_vagas:latest
